@@ -1,0 +1,200 @@
+.features-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    background-image: url('/features_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* For overlay if needed */
+}
+
+/* Add overlay to ensure text readability on the new image */
+.features-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Dark overlay */
+    z-index: 0;
+}
+
+.features-container {
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    /* Ensure content is above overlay */
+    z-index: 1;
+}
+
+/* Header Styles */
+.features-header {
+    margin-bottom: 4rem;
+}
+
+.features-label {
+    display: block;
+    font-family: var(--font-main);
+    color: #4ade80;
+    /* Greenish/Mint accent from image */
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.features-headline {
+    font-family: var(--font-main);
+    font-size: 3.5rem;
+    /* Large Headline */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.features-description {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    /* Grey text */
+    max-width: 600px;
+}
+
+/* Grid Layout - Bento Box Style */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Column Base */
+    grid-auto-rows: 300px;
+    /* Fixed row height base */
+    gap: 1.5rem;
+}
+
+/* Card Base Styles */
+.feature-card {
+    background: #111;
+    /* Dark card bg */
+    border-radius: 24px;
+    /* Large rounded corners */
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Text at bottom */
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Card Sizes */
+.feature-large {
+    grid-column: span 2;
+}
+
+.feature-wide {
+    grid-column: span 1;
+    /* Or wider if needed */
+}
+
+.feature-tall {
+    grid-row: span 2;
+}
+
+.feature-big {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+/* Content Styles */
+.card-content {
+    z-index: 2;
+}
+
+.card-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card h3 {
+    font-family: var(--font-main);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Specific Card Backgrounds (Gradients/Abstract for now) */
+.card-ai {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a1a2a 100%);
+}
+
+.card-ai::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+}
+
+.card-analytics {
+    background: linear-gradient(to bottom, #1a1a1a, #111);
+}
+
+.card-creators {
+    background: linear-gradient(to top, #1a1a1a, #222);
+}
+
+.card-payments {
+    background: linear-gradient(135deg, #111 0%, #1a2a1a 100%);
+}
+
+.card-agentic {
+    background: linear-gradient(135deg, #2a1a1a 0%, #111 100%);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    /* Dotted border for "Coming Soon" vibe */
+}
+
+
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+        grid-auto-rows: 250px;
+    }
+
+    .feature-large,
+    .feature-wide,
+    .feature-tall,
+    .feature-big {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .features-headline {
+        font-size: 2.5rem;
+    }
+}
