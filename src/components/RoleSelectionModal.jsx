@@ -4,20 +4,23 @@ import SignInModal from './SignInModal';
 
 const RoleSelectionModal = ({ isOpen, onClose }) => {
     const [showLogin, setShowLogin] = useState(false);
-    const [selectedRole, setSelectedRole] = useState(null);
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            // Reset login state when opening modal
-            setShowLogin(false);
         } else {
             document.body.style.overflow = 'unset';
-            // Also reset when closing to be safe
-            setShowLogin(false);
         }
         return () => {
             document.body.style.overflow = 'unset';
         };
+    }, [isOpen]);
+
+    // Reset login state when modal closes completely (unmounts or closes)
+    useEffect(() => {
+        if (!isOpen) {
+            const timer = setTimeout(() => setShowLogin(false), 300); // Wait for animation if any
+            return () => clearTimeout(timer);
+        }
     }, [isOpen]);
 
     if (!isOpen) return null;
@@ -25,7 +28,6 @@ const RoleSelectionModal = ({ isOpen, onClose }) => {
     const handleRoleSelect = (role) => {
         console.log(`Selected role: ${role}`);
         localStorage.setItem('userRole', role); // Save role for post-login
-        setSelectedRole(role);
         setShowLogin(true);
     };
 

@@ -1,16 +1,13 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CreatorDashboard.css';
 import { supabase } from '../config/supabase';
 
 const CreatorDashboard = () => {
     const [activeTab, setActiveTab] = useState('home');
-    const [petals, setPetals] = useState([]);
-
-    // Generate sakura petals
-    useEffect(() => {
+    const [petals] = useState(() => {
         const petalCount = 15;
-        const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
+        return Array.from({ length: petalCount }).map((_, i) => ({
             id: i,
             left: Math.random() * 100 + '%',
             animationDuration: Math.random() * 10 + 10 + 's',
@@ -18,8 +15,7 @@ const CreatorDashboard = () => {
             width: Math.random() * 10 + 10 + 'px',
             height: Math.random() * 10 + 10 + 'px',
         }));
-        setPetals(newPetals);
-    }, []);
+    });
 
     const handleSignOut = async () => {
         if (window.confirm('Are you sure you want to sign out?')) {

@@ -25,9 +25,6 @@ const SignInModal = ({ isOpen, onClose }) => {
             console.log("Google Login button clicked");
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
-                options: {
-                    redirectTo: window.location.origin // Redirect back to localhost:5173
-                }
             });
             if (error) throw error;
             console.log("Supabase Login initiated:", data);

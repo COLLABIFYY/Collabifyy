@@ -7,24 +7,12 @@ import CreatorDashboard from './CreatorDashboard';
 import BrandDashboard from './BrandDashboard';
 
 const DashboardLayout = () => {
-    const [role, setRole] = useState(null);
+    const [role] = useState(() => localStorage.getItem('userRole'));
     const [hasProfile, setHasProfile] = useState(false);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        checkProfile();
-    }, []);
+    const [loading, setLoading] = useState(() => !!localStorage.getItem('userRole'));
 
     const checkProfile = async () => {
         try {
-            const savedRole = localStorage.getItem('userRole');
-            setRole(savedRole);
-
-            if (!savedRole) {
-                setLoading(false);
-                return;
-            }
-
             // Check if user has completed onboarding
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) {
@@ -32,7 +20,26 @@ const DashboardLayout = () => {
                 return;
             }
 
-            const tableName = savedRole === 'creator' ? 'creators' : 'brands';
+            if (!role) {
+                // Try to recover role from DB
+                const { data: creator } = await supabase.from('creators').select('id').eq('user_id', user.id).single();
+                if (creator) {
+                    localStorage.setItem('userRole', 'creator');
+                    window.location.reload();
+                    return;
+                }
+                const { data: brand } = await supabase.from('brands').select('id').eq('user_id', user.id).single();
+                if (brand) {
+                    localStorage.setItem('userRole', 'brand');
+                    window.location.reload();
+                    return;
+                }
+                // If no role found, stop loading (will show "One moment..." screen which needs fixing or logout)
+                setLoading(false);
+                return;
+            }
+
+            const tableName = role === 'creator' ? 'creators' : 'brands';
             const { data, error } = await supabase
                 .from(tableName)
                 .select('id')
@@ -42,13 +49,19 @@ const DashboardLayout = () => {
             if (data && !error) {
                 setHasProfile(true);
             }
-
-            setLoading(false);
         } catch (error) {
             console.error("Error checking profile:", error);
+        } finally {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (role) {
+            checkProfile();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [role]);
 
     const handleLogout = async () => {
         await supabase.auth.signOut();

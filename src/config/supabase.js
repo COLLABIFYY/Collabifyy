@@ -54,7 +54,7 @@ export const supabase = {
             try {
                 const client = await getSupabase();
                 return client.auth.getSession();
-            } catch (_err) { return { data: { session: null } }; }
+            } catch { return { data: { session: null } }; }
         },
         onAuthStateChange: (callback) => {
             getSupabase().then(client => {

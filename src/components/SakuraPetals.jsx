@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './SakuraPetals.css';
 
 const SakuraPetals = () => {
-    const [petals, setPetals] = useState([]);
-
-    useEffect(() => {
+    const [petals] = useState(() => {
         const petalCount = 15;
-        const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
+        return Array.from({ length: petalCount }).map((_, i) => ({
             id: i,
             left: Math.random() * 100 + '%',
             animationDuration: Math.random() * 10 + 10 + 's', // 10-20s duration
@@ -14,8 +12,7 @@ const SakuraPetals = () => {
             width: Math.random() * 10 + 10 + 'px', // 10-20px size
             height: Math.random() * 10 + 10 + 'px',
         }));
-        setPetals(newPetals);
-    }, []);
+    });
 
     return (
         <div className="sakura-container">
