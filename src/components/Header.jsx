@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
+import SignInModal from './SignInModal';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,13 +28,22 @@ const Header = () => {
         </ul>
       </nav>
 
-      <button
-        className="talk-founder-btn"
-        onClick={() => window.open('https://calendly.com/sakshamkumar1226', '_blank')}
-      >
-        Talk to Founder
-      </button>
+      <div className="header-actions">
+        <button
+          className="nav-link login-btn"
+          onClick={() => setShowLogin(true)}
+        >
+          LOGIN
+        </button>
+        <button
+          className="talk-founder-btn"
+          onClick={() => window.open('https://calendly.com/sakshamkumar1226', '_blank')}
+        >
+          Talk to Founder
+        </button>
+      </div>
 
+      <SignInModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
 
     </header>
   );

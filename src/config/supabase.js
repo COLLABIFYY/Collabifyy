@@ -34,11 +34,27 @@ export const supabase = {
                 return { error: err };
             }
         },
+        signInWithPassword: async (args) => {
+            try {
+                const client = await getSupabase();
+                return client.auth.signInWithPassword(args);
+            } catch (err) {
+                return { error: err };
+            }
+        },
+        signUp: async (args) => {
+            try {
+                const client = await getSupabase();
+                return client.auth.signUp(args);
+            } catch (err) {
+                return { error: err };
+            }
+        },
         getSession: async () => {
             try {
                 const client = await getSupabase();
                 return client.auth.getSession();
-            } catch (err) { return { data: { session: null } }; }
+            } catch (_err) { return { data: { session: null } }; }
         },
         onAuthStateChange: (callback) => {
             getSupabase().then(client => {
