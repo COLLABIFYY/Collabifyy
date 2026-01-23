@@ -1,52 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>collabifyy-landing</title>
-    <script>
-      window.onerror = function(message, source, lineno, colno, error) {
-        var div = document.createElement('div');
-        div.style.color = 'red';
-        div.style.background = '#ffebee';
-        div.style.padding = '20px';
-        div.style.border = '1px solid red';
-        div.style.margin = '20px';
-        div.style.fontFamily = 'monospace';
-        div.style.zIndex = '9999';
-        div.style.position = 'fixed';
-        div.style.top = '0';
-        div.style.left = '0';
-        div.style.width = '100%';
-        div.innerHTML = '<h1>Global Error Caught</h1>' +
-                        '<p><strong>Message:</strong> ' + message + '</p>' +
-                        '<p><strong>Source:</strong> ' + source + ':' + lineno + '</p>';
-        document.body.appendChild(div);
-      };
-      // Also catch unhandled promise rejections
-      window.onunhandledrejection = function(event) {
-        var div = document.createElement('div');
-        div.style.color = 'darkred';
-        div.style.background = '#fff8e1';
-        div.style.padding = '20px';
-        div.style.border = '1px solid orange';
-        div.style.margin = '20px';
-        div.style.marginTop = '150px'; // Offset from previous
-        div.style.fontFamily = 'monospace';
-        div.style.zIndex = '9999';
-        div.style.position = 'fixed';
-        div.style.top = '0';
-        div.style.left = '0';
-        div.style.width = '100%';
-        div.innerHTML = '<h1>Unhandled Promise Rejection</h1>' +
-                        '<p><strong>Reason:</strong> ' + event.reason + '</p>';
-        document.body.appendChild(div);
-      };
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collabifyy</title>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      var div = document.createElement('div');
+      div.style.color = 'red';
+      div.style.background = '#ffebee';
+      div.style.padding = '20px';
+      div.style.border = '1px solid red';
+      div.style.margin = '20px';
+      div.style.fontFamily = 'monospace';
+      div.style.zIndex = '9999';
+      div.style.position = 'fixed';
+      div.style.top = '0';
+      div.style.left = '0';
+      div.style.width = '100%';
+      div.innerHTML = '<h1>Global Error Caught</h1>' +
+        '<p><strong>Message:</strong> ' + message + '</p>' +
+        '<p><strong>Source:</strong> ' + source + ':' + lineno + '</p>';
+      document.body.appendChild(div);
+    };
+    // Also catch unhandled promise rejections
+    window.onunhandledrejection = function (event) {
+      var div = document.createElement('div');
+      div.style.color = 'darkred';
+      div.style.background = '#fff8e1';
+      div.style.padding = '20px';
+      div.style.border = '1px solid orange';
+      div.style.margin = '20px';
+      div.style.marginTop = '150px'; // Offset from previous
+      div.style.fontFamily = 'monospace';
+      div.style.zIndex = '9999';
+      div.style.position = 'fixed';
+      div.style.top = '0';
+      div.style.left = '0';
+      div.style.width = '100%';
+      div.innerHTML = '<h1>Unhandled Promise Rejection</h1>' +
+        '<p><strong>Reason:</strong> ' + event.reason + '</p>';
+      document.body.appendChild(div);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
