@@ -86,8 +86,23 @@
     color: var(--sakura-primary);
 }
 
-.talk-founder-btn {
+.header-actions {
     margin-left: auto;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    z-index: 10;
+}
+
+.login-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    color: #fff;
+    padding: 0;
+}
+
+.talk-founder-btn {
     background: #fff;
     color: #ff1a75;
     /* Pink text */

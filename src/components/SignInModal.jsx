@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SignInModal.css';
 import { supabase } from '../config/supabase';
 
 const SignInModal = ({ isOpen, onClose }) => {
-    const [isSignUp, setIsSignUp] = React.useState(false);
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -30,6 +34,39 @@ const SignInModal = ({ isOpen, onClose }) => {
         } catch (error) {
             console.error("Error signing in with Google:", error);
             alert(`Login failed: ${error.message}`);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try {
+            let result;
+            if (isSignUp) {
+                result = await supabase.auth.signUp({
+                    email,
+                    password,
+                });
+            } else {
+                result = await supabase.auth.signInWithPassword({
+                    email,
+                    password,
+                });
+            }
+
+            const { data, error: authError } = result;
+
+            if (authError) throw authError;
+
+            console.log("Auth success:", data);
+            onClose();
+        } catch (err) {
+            console.error("Auth error:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -66,14 +103,28 @@ const SignInModal = ({ isOpen, onClose }) => {
                         <span>OR CONTINUE WITH EMAIL</span>
                     </div>
 
-                    <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+                    {error && <div className="auth-error" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+
+                    <form className="auth-form" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Enter your email address" required />
+                            <input
+                                type="email"
+                                placeholder="Enter your email address"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" placeholder="••••••••" required />
+                            <input
+                                type="password"
+                                placeholder="••••••••"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
 
                         {!isSignUp && (
@@ -82,11 +133,13 @@ const SignInModal = ({ isOpen, onClose }) => {
                             </div>
                         )}
 
-                        <button type="submit" className="submit-btn">
-                            {isSignUp ? "Sign Up" : "Sign In"}
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
+                        <button type="submit" className="submit-btn" disabled={loading}>
+                            {loading ? "Processing..." : (isSignUp ? "Sign Up" : "Sign In")}
+                            {!loading && (
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            )}
                         </button>
                     </form>
 
