@@ -206,6 +206,45 @@
 
 /* Updated AI Chat Interface Styles for 'Get Discovered' */
 /* Updated AI Chat Interface Styles */
+/* Brand Chat Header Styles (Restored) */
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chat-avatar-ai {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff1a75;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ff1a75;
+    /* Deep Pink */
+}
+
+.chat-status {
+    font-size: 0.7rem;
+    color: #4ade80;
+}
+
 .ai-chat-interface {
     position: absolute;
     top: 0;
@@ -614,7 +653,8 @@
 .tracking-status {
     font-size: 0.7rem;
     font-weight: 700;
-    color: #1a932e;
+    color: #ff1a75;
+    /* Deep Pink */
     background: rgba(255, 255, 255, 0.5);
     padding: 2px 8px;
     border-radius: 12px;
