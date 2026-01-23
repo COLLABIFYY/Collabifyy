@@ -3,7 +3,6 @@ import './SignInModal.css';
 import { supabase } from '../config/supabase';
 
 const SignInModal = ({ isOpen, onClose }) => {
-    const [isSignUp, setIsSignUp] = React.useState(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -47,7 +46,7 @@ const SignInModal = ({ isOpen, onClose }) => {
                 <div className="auth-header">
                     <h2 className="modal-title">Welcome to Collabifyy</h2>
                     <p className="modal-subtitle">
-                        {isSignUp ? "Create an account to get started" : "Sign in to continue your journey"}
+                        Sign in or create an account to continue
                     </p>
                 </div>
 
@@ -62,42 +61,7 @@ const SignInModal = ({ isOpen, onClose }) => {
                         Continue with Google
                     </button>
 
-                    <div className="auth-divider">
-                        <span>OR CONTINUE WITH EMAIL</span>
-                    </div>
 
-                    <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-                        <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="email" placeholder="Enter your email address" required />
-                        </div>
-                        <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="••••••••" required />
-                        </div>
-
-                        {!isSignUp && (
-                            <div className="forgot-password">
-                                <a href="#">Forgot Password?</a>
-                            </div>
-                        )}
-
-                        <button type="submit" className="submit-btn">
-                            {isSignUp ? "Sign Up" : "Sign In"}
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </form>
-
-                    <div className="auth-footer">
-                        <p>
-                            {isSignUp ? "Already have an account?" : "Don't have an account?"}
-                            <button className="toggle-auth-mode" onClick={() => setIsSignUp(!isSignUp)}>
-                                {isSignUp ? "Sign In" : "Sign up"}
-                            </button>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
