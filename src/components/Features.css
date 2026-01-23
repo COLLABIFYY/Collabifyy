@@ -413,11 +413,15 @@
 }
 
 .stat-label {
+    /* Update this block */
+.stat-header .stat-label, 
+.stat-label {
     font-size: 0.75rem;
-    color: #ff1a75;
+    color: #ff1a75 !important; /* Ye important hai */
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
 }
 
 .trend-icon {
