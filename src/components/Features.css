@@ -412,9 +412,11 @@
     margin-bottom: 0.5rem;
 }
 
+/* Increased specificity and forced color */
+.stat-header .stat-label,
 .stat-label {
     font-size: 0.75rem;
-    color: #ff1a75;
+    color: #ff1a75 !important;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1190,4 +1192,11 @@
     text-align: center;
     max-width: 80px;
     line-height: 1.2;
+}
+
+/* FORCE OVERRIDE FOR STAT LABELS */
+div.feature-card .stat-header span.stat-label,
+div.feature-card .analytics-interface .stat-label {
+    color: #ff1a75 !important;
+    font-weight: 700 !important;
 }

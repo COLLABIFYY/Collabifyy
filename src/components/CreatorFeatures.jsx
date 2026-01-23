@@ -118,7 +118,7 @@ const CreatorFeatures = () => {
                         <div className="analytics-interface">
                             <div className="stat-card main-stat">
                                 <div className="stat-header">
-                                    <span className="stat-label">Active Campaigns</span>
+                                    <span className="stat-label" style={{ color: '#ff1a75' }}>Active Campaigns</span>
                                     <TrendingUp size={14} className="trend-icon" />
                                 </div>
                                 <div className="stat-value">124</div>

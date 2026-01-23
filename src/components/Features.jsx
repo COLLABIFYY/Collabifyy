@@ -62,7 +62,7 @@ const Features = () => {
                         <div className="analytics-interface">
                             <div className="stat-card main-stat">
                                 <div className="stat-header">
-                                    <span className="stat-label">Total Reach</span>
+                                    <span className="stat-label" style={{ color: '#ff1a75' }}>Total Reach</span>
                                     <TrendingUp size={14} className="trend-icon" />
                                 </div>
                                 <div className="stat-value">2.4M</div>
