@@ -10,6 +10,23 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --spacing-container: 4rem;
+
+  /* Sakura Theme Variables */
+  --sakura-primary: #ffb7d5;
+  --sakura-light: #ffd4e5;
+  --sakura-gradient-start: #ffb7d5;
+  --sakura-gradient-end: #ff8fb5;
+  --bg-dark-start: #0d0d0d;
+  --bg-dark-end: #1a0d1a;
+
+  /* Onboarding Theme */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary-gradient: linear-gradient(135deg, #ff4d8d 0%, #ff8d4d 100%);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -21,11 +38,6 @@
 body {
   font-family: var(--font-main);
   background-color: var(--bg-color);
-  background-image: url('/landing_bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: var(--text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

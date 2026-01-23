@@ -12,11 +12,8 @@
     align-items: center;
     overflow: hidden;
     filter: brightness(1.1);
-    /* Enhance brightness beyond original */
 }
 
-/* Dark overlay for readability */
-/* Overlay removed for maximum brightness */
 .meet-section::before {
     display: none;
 }
@@ -24,7 +21,7 @@
 .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity, transform;
 }
 
@@ -40,32 +37,36 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    /* Container fills the section */
 }
 
 .meet-subtitle {
     font-family: var(--font-main);
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: var(--text-secondary);
+    color: #ff4d8d;
+    /* Vibrant Pink */
+    background: #ffffff;
+    padding: 0.6rem 1.8rem;
+    border-radius: 4px;
     margin-bottom: 2rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     display: block;
     position: absolute;
     top: 6rem;
     left: 50%;
     transform: translateX(-50%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
 
 .meet-split-layout {
     display: contents;
-    /* Allow children to position independently */
 }
 
 .meet-row {
     position: absolute;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* For parallax smoothness */
 }
 
 .brands-row {
@@ -81,18 +82,25 @@
 .meet-large-text {
     font-family: var(--font-main);
     font-size: clamp(3rem, 8vw, 6rem);
-    /* Responsive large text */
     font-weight: 700;
     line-height: 1;
     color: #ffffff;
-    /* pure white solid text */
     text-transform: uppercase;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
+    background: linear-gradient(to right, #fff, #fff, var(--sakura-primary));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 0% center;
 }
 
 .meet-large-text:hover {
-    transform: scale(1.02);
+    transform: scale(1.02) skewX(-2deg);
+    background-position: 100% center;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(255, 183, 213, 0.3);
 }
 
 /* Chat Model Styles */
@@ -101,8 +109,18 @@
     position: relative;
     width: 100%;
     max-width: 450px;
-    /* Adjust size */
     margin-left: 0.5rem;
+    /* Float In Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+}
+
+@keyframes floatIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .collabi-chat-img {
@@ -111,29 +129,33 @@
     display: block;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collabi-chat-container:hover .collabi-chat-img {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .collabi-chat-text {
     position: absolute;
-    top: 9%;
-    /* Adjusted to cover the area */
-    left: 10%;
-    /* Adjusted to start earlier */
+    top: 10%;
+    left: 13%;
     color: #ffffff;
     font-family: var(--font-main);
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     pointer-events: none;
     white-space: nowrap;
     z-index: 20;
 
-    /* Simulate/Extend the black box */
+    /* Blending styling */
     background-color: #000000;
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    min-width: 200px;
-    /* Ensure it's wide enough */
+    padding: 0.6rem 2rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -143,7 +165,6 @@
 
     .collabi-chat-container {
         max-width: 300px;
-        /* Resize on mobile */
     }
 
     .brands-row {
@@ -152,7 +173,83 @@
 
     .collabi-chat-text {
         font-size: 0.9rem;
-        top: 15%;
-        left: 16%;
+        top: 10%;
+        left: 10%;
+        min-width: unset;
+    }
+}
+
+
+/* Central Collabifyy Node */
+.meet-center-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Text Style matching .meet-large-text */
+    font-family: var(--font-main);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    z-index: 10;
+    cursor: default;
+
+    /* Gradient Text */
+    background: linear-gradient(to right, #fff, var(--sakura-primary));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 0% center;
+
+    transition: transform 0.3s ease;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.meet-center-node:hover {
+    transform: translate(-50%, -55%) scale(1.05);
+    background-position: 100% center;
+}
+
+/* Connections Overlay */
+.connections-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.connection-path {
+    fill: none;
+    stroke: #ff1a75;
+    /* Deep Pink */
+    stroke-opacity: 1;
+    stroke-width: 3;
+    /* Thick and visible */
+    stroke-dasharray: 10;
+    filter: drop-shadow(0 0 5px rgba(255, 26, 117, 0.6));
+    /* Pink glow */
+    animation: dashFlow 2s linear infinite;
+}
+
+@keyframes dashFlow {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+@media (max-width: 768px) {
+    .meet-center-node {
+        font-size: 2.5rem;
+    }
+
+    /* Hide arrows on mobile for cleaner layout */
+    .connections-overlay {
+        opacity: 0.5;
     }
 }

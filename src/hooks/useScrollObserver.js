@@ -11,10 +11,12 @@ const useScrollObserver = ({ threshold = 0.1 } = {}) => {
                 setIsVisible(true);
             } else {
                 // Element is NOT visible
-                // If the element is below the viewport (top > 0), reset visibility so it animates again when we scroll down.
-                // If the element is above the viewport (top < 0), keep it visible so it doesn't re-animate when we scroll up.
                 if (entry.boundingClientRect.top > 0) {
+                    // Below viewport - reset to allow animation on scroll down
                     setIsVisible(false);
+                } else if (entry.boundingClientRect.top < 0) {
+                    // Above viewport - keep visible (or mark visible if loaded at bottom)
+                    setIsVisible(true);
                 }
             }
         }, { threshold });
