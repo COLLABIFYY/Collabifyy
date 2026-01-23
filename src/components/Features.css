@@ -205,6 +205,7 @@
 /* AI Chat Interface Styles */
 
 /* Updated AI Chat Interface Styles for 'Get Discovered' */
+/* Updated AI Chat Interface Styles */
 .ai-chat-interface {
     position: absolute;
     top: 0;
@@ -215,11 +216,15 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    z-index: 1;
+}
+
+/* Specific styling for Creator 'Get Discovered' card */
+.ai-chat-interface.creator-mode {
     justify-content: center;
     /* Center vertically */
     align-items: center;
     /* Center horizontally */
-    z-index: 1;
 }
 
 .chat-messages.centered-content {

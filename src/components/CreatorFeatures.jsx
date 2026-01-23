@@ -30,7 +30,7 @@ const CreatorFeatures = () => {
                 <div className="features-grid">
                     {/* Item 1: Get Discovered (Large - Span 2) */}
                     <div className="feature-card feature-large card-ai">
-                        <div className="ai-chat-interface">
+                        <div className="ai-chat-interface creator-mode">
                             <div className="chat-messages centered-content">
                                 <div className="chat-message ai invite-message">
                                     <p className="invite-title">🎉 Collab Invite Received</p>
