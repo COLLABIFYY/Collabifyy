@@ -13,8 +13,16 @@ async function getSupabase() {
     try {
         console.log("Loading Supabase library...");
         const { createClient } = await import('@supabase/supabase-js');
-        supabaseInstance = createClient(supabaseUrl, supabaseKey);
-        console.log("Supabase library loaded successfully.");
+        supabaseInstance = createClient(supabaseUrl, supabaseKey, {
+            auth: {
+                flowType: 'pkce',
+                autoRefreshToken: true,
+                detectSessionInUrl: true,
+                persistSession: true,
+                storage: window.localStorage
+            }
+        });
+        console.log("Supabase library loaded successfully with PKCE flow.");
         return supabaseInstance;
     } catch (error) {
         console.error("Failed to load Supabase library:", error);
