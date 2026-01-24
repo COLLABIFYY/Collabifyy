@@ -8,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
+    /* Higher than header */
     backdrop-filter: blur(8px);
     animation: fadeIn 0.3s ease-out;
 }
@@ -183,11 +184,30 @@
 @media (max-width: 768px) {
     .role-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        /* Reduced gap */
     }
 
     .role-modal-content {
-        padding: 2rem;
+        padding: 1.5rem;
+        /* Reduced padding */
         width: 95%;
+        max-height: 90vh;
+        /* Prevent overflow */
+        overflow-y: auto;
+        /* Allow scrolling if needed */
+    }
+
+    .role-modal-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.25rem;
+    }
+
+    .role-modal-header {
+        margin-bottom: 1.5rem;
+        /* Reduced margin */
+        padding-top: 0.5rem;
     }
 
     .role-modal-title {
@@ -195,6 +215,17 @@
     }
 
     .role-card {
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+
+    .role-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+
+    .role-icon svg {
+        width: 32px;
+        height: 32px;
     }
 }
