@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import './Onboarding.css';
 import { supabase } from '../config/supabase';
 
-import { countryCodes } from '../data/countryCodes';
-
 const BrandOnboarding = ({ onComplete }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -16,7 +14,17 @@ const BrandOnboarding = ({ onComplete }) => {
         aboutCompany: ''
     });
 
-    // Local countryCodes array removed in favor of import
+    const countryCodes = [
+        { code: '+91', country: 'India' },
+        { code: '+1', country: 'USA' },
+        { code: '+44', country: 'UK' },
+        { code: '+61', country: 'Australia' },
+        { code: '+81', country: 'Japan' },
+        { code: '+49', country: 'Germany' },
+        { code: '+33', country: 'France' },
+        { code: '+86', country: 'China' },
+        { code: '+971', country: 'UAE' },
+    ];
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
