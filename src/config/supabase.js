@@ -2,8 +2,12 @@
 // DYNAMIC IMPORT STRATEGY
 // Prevents "White Screen" if the library fails to load at startup.
 
-const supabaseUrl = 'https://repjqbnngjlvibswnnly.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlcGpxYm5uZ2psdmlic3dubmx5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxNDQ4OTcsImV4cCI6MjA4NDcyMDg5N30.eyd5XN1s8954MJG3E3QE026nxJZ7IfdSgJSfPeQoaJw'
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Missing Supabase environment variables. Please check your .env file.");
+}
 
 let supabaseInstance = null;
 
@@ -46,7 +50,7 @@ export const supabase = {
             try {
                 const client = await getSupabase();
                 return client.auth.getSession();
-            } catch (err) { return { data: { session: null } }; }
+            } catch { return { data: { session: null } }; }
         },
         onAuthStateChange: (callback) => {
             getSupabase().then(client => {

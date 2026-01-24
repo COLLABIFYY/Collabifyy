@@ -14,6 +14,15 @@ Collabifyy is a platform connecting Brands and Creators for seamless collaborati
 - Lucide React (Icons)
 - CSS (Custom styling)
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your `.env` file:
+
+`VITE_SUPABASE_URL`: Your Supabase Project URL
+`VITE_SUPABASE_ANON_KEY`: Your Supabase Anonymous Key
+
+You can refer to `.env.example` for the required format.
+
 ## Getting Started
 
 1. Install dependencies:
