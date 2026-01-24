@@ -242,12 +242,63 @@
     /* Center horizontally */
 }
 
+/* Reset margin for creator mode to allow vertical centering */
+.ai-chat-interface.creator-mode .chat-messages {
+    margin-bottom: 0;
+}
+
 .chat-messages.centered-content {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* Ensure horizontal centering in column mode */
     margin-bottom: 2rem;
     /* Give space for VISIBILITY badge */
+}
+
+/* Specific styling for Creator 'Get Discovered' card */
+.ai-chat-interface.creator-mode {
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+/* Reset margin for creator mode to allow vertical centering */
+.ai-chat-interface.creator-mode .chat-messages {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.chat-messages.centered-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Specific styling for Creator 'Get Discovered' card */
+.ai-chat-interface.creator-mode {
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+/* Reset margin for creator mode to allow vertical centering */
+.ai-chat-interface.creator-mode .chat-messages {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.chat-messages.centered-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .chat-message.invite-message {
@@ -326,15 +377,33 @@
 
 .chat-input-area {
     margin-top: auto;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: none;
-    /* Hidden for now inside the card due to space */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    margin-bottom: 1rem;
+    /* Space from bottom padding */
+    backdrop-filter: blur(4px);
+}
+
+.input-placeholder {
+    color: #ff1a75;
+    /* Deep Pink */
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.chat-messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
+    /* Push messages up */
+    gap: 1rem;
 }
 
 

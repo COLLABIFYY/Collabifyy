@@ -11,7 +11,7 @@ const SmartDiscoveryCard = ({ className = '', ...props }) => (
                     <Sparkles size={16} />
                 </div>
                 <div className="chat-info">
-                    <span className="chat-name">Collabifyy AI</span>
+                    <span className="chat-name">Collabi</span>
                     <span className="chat-status">Online</span>
                 </div>
             </div>
@@ -20,14 +20,16 @@ const SmartDiscoveryCard = ({ className = '', ...props }) => (
                     <p>Find me creators of beauty niche from India</p>
                 </div>
             </div>
-            <div className="chat-input-area">
-                <div className="input-placeholder">Type a message...</div>
-                <div className="send-btn"><Search size={14} /></div>
-            </div>
+            {/* Input moved to card-content */}
         </div>
-        <div className="card-content">
-            <span className="card-badge">AI POWERED</span>
-            <h3>Smart Discovery</h3>
+        <div className="card-content with-input">
+            <div className="text-content">
+                <span className="card-badge">AI POWERED</span>
+                <h3>Smart Discovery</h3>
+            </div>
+            <div className="chat-input-area">
+                <div className="input-placeholder">Your AI-assistant , Collabi</div>
+            </div>
         </div>
     </div>
 );
