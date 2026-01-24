@@ -97,6 +97,7 @@
     animation:
         slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards,
         gradientMove 5s linear infinite;
+    will-change: background-position;
     opacity: 0;
 }
 

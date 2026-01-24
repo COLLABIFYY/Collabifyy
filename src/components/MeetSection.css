@@ -344,6 +344,8 @@
     justify-content: center;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
     border: 3px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -421,42 +423,42 @@
 }
 
 /* Adjust circles for smaller screens */
-@media (max-width: 428px) {
+@media (max-width: 768px) {
     .venn-container {
-        max-width: 340px;
-        height: 300px;
+        max-width: 320px;
+        height: 380px;
         /* Increased height for separation */
     }
 
     .venn-circle {
-        width: 170px;
-        height: 170px;
+        width: 190px;
+        height: 190px;
     }
 
     /* Push BRAND text to top-left */
     .venn-left {
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 3rem 0 0 1.5rem;
+        padding: 3.5rem 0 0 1.5rem;
     }
 
     /* Push CREATOR text to bottom-right */
     .venn-right {
         justify-content: flex-end;
         align-items: flex-end;
-        padding: 0 1.5rem 3rem 0;
+        padding: 0 1.5rem 3.5rem 0;
     }
 
     .venn-text {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .venn-intersection {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
     }
 
     .venn-center-text {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }

@@ -11,6 +11,9 @@
     z-index: 9999;
     /* Higher than header */
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
     animation: fadeIn 0.3s ease-out;
 }
 

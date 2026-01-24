@@ -215,17 +215,15 @@ const Features = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    const tickingRef = React.useRef(false);
+
     React.useEffect(() => {
         const container = scrollContainerRef.current;
         if (!container) return;
 
-        const handleScroll = () => {
-            if (!container || !isMobile) return;
-
+        const checkScrollPosition = () => {
             const scrollLeft = container.scrollLeft;
             const scrollWidth = container.scrollWidth;
-            const clientWidth = container.offsetWidth;
-
             // Total width of one set of cards (approximate is fine, but precise is better)
             // Since we possess 3 identical sets, one set is 1/3 of total scrollable width
             const singleSetWidth = scrollWidth / 3;
@@ -241,6 +239,18 @@ const Features = () => {
                 container.style.scrollBehavior = 'auto';
                 container.scrollLeft = scrollLeft + singleSetWidth;
                 container.style.scrollBehavior = 'smooth';
+            }
+        };
+
+        const handleScroll = () => {
+            if (!container || !isMobile) return;
+
+            if (!tickingRef.current) {
+                window.requestAnimationFrame(() => {
+                    checkScrollPosition();
+                    tickingRef.current = false;
+                });
+                tickingRef.current = true;
             }
         };
 

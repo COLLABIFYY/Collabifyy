@@ -185,13 +185,13 @@ const CreatorFeatures = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    const tickingRef = React.useRef(false);
+
     React.useEffect(() => {
         const container = scrollContainerRef.current;
         if (!container) return;
 
-        const handleScroll = () => {
-            if (!container || !isMobile) return;
-
+        const checkScrollPosition = () => {
             const scrollLeft = container.scrollLeft;
             const scrollWidth = container.scrollWidth;
 
@@ -210,6 +210,18 @@ const CreatorFeatures = () => {
                 container.style.scrollBehavior = 'auto';
                 container.scrollLeft = scrollLeft + singleSetWidth;
                 container.style.scrollBehavior = 'smooth';
+            }
+        };
+
+        const handleScroll = () => {
+            if (!container || !isMobile) return;
+
+            if (!tickingRef.current) {
+                window.requestAnimationFrame(() => {
+                    checkScrollPosition();
+                    tickingRef.current = false;
+                });
+                tickingRef.current = true;
             }
         };
 

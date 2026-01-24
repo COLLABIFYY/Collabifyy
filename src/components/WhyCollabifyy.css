@@ -55,6 +55,9 @@
     background: rgba(0, 0, 0, 0.7);
     /* Darker glass for readability */
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 2.5rem;
@@ -111,6 +114,9 @@
     padding: 1.5rem;
     border-radius: 16px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
 }
 
 .stat-number {
