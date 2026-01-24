@@ -162,22 +162,57 @@
 
 @media (max-width: 768px) {
     .meet-large-text {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .collabi-chat-container {
-        max-width: 300px;
+        max-width: 280px;
     }
 
     .brands-row {
-        left: 2rem;
+        left: 1.5rem;
     }
 
     .collabi-chat-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         top: 10%;
         left: 10%;
         min-width: unset;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .meet-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 428px) {
+    .meet-large-text {
+        font-size: 2rem;
+        letter-spacing: -1px;
+    }
+
+    .collabi-chat-container {
+        max-width: 240px;
+    }
+
+    .brands-row {
+        left: 1rem;
+    }
+
+    .creator-row {
+        right: 1rem;
+    }
+
+    .collabi-chat-text {
+        font-size: 0.75rem;
+        padding: 0.4rem 1.2rem;
+    }
+
+    .meet-subtitle {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
     }
 }
 
@@ -248,11 +283,21 @@
 
 @media (max-width: 768px) {
     .meet-center-node {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
-    /* Hide arrows on mobile for cleaner layout */
+    /* Reduce arrow visibility on mobile for cleaner layout */
     .connections-overlay {
-        opacity: 0.5;
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 428px) {
+    .meet-center-node {
+        font-size: 1.8rem;
+    }
+
+    .connections-overlay {
+        opacity: 0.3;
     }
 }

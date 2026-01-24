@@ -109,7 +109,36 @@
 }
 
 @media (max-width: 768px) {
+    .header {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
     .nav {
         display: none;
+    }
+
+    .talk-founder-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 428px) {
+    .header {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .talk-founder-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
     }
 }

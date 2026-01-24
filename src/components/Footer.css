@@ -32,6 +32,7 @@
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, #ffffff 0%, var(--sakura-primary) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.9;
 }
@@ -149,6 +150,10 @@
 }
 
 @media (max-width: 640px) {
+    .footer-section {
+        padding: 4rem 1.5rem 2rem;
+    }
+
     .footer-top {
         display: flex;
         flex-direction: column;
@@ -158,6 +163,10 @@
     .footer-brand {
         width: 100%;
         padding-right: 0;
+    }
+
+    .footer-logo {
+        font-size: 2rem;
     }
 
     .footer-col {
@@ -172,5 +181,37 @@
 
     .bottom-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 428px) {
+    .footer-section {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .footer-logo {
+        font-size: 1.8rem;
+    }
+
+    .footer-desc {
+        font-size: 0.9rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-col h3 {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+
+    .copyright,
+    .bottom-links a {
+        font-size: 0.85rem;
     }
 }

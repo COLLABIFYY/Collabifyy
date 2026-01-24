@@ -413,15 +413,17 @@
 }
 
 .stat-label {
+
     /* Update this block */
-.stat-header .stat-label, 
-.stat-label {
-    font-size: 0.75rem;
-    color: #ff1a75 !important; /* Ye important hai */
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+    .stat-header .stat-label,
+    .stat-label {
+        font-size: 0.75rem;
+        color: #ff1a75 !important;
+        /* Ye important hai */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 }
 
 .trend-icon {
@@ -1051,6 +1053,7 @@
     .features-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: 250px;
+        gap: 1.5rem;
     }
 
     .feature-large,
@@ -1063,6 +1066,35 @@
 
     .features-headline {
         font-size: 2.5rem;
+    }
+
+    .features-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 428px) {
+    .features-grid {
+        grid-auto-rows: 220px;
+        gap: 1rem;
+    }
+
+    .features-headline {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .features-section {
+        padding: 2.5rem 1rem;
+    }
+
+    .card-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
     }
 }
 

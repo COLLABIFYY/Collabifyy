@@ -97,6 +97,16 @@
 }
 
 @media (max-width: 768px) {
+    .pricing-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .pricing-title {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin-bottom: 1.5rem;
+    }
+
     .coming-soon-container {
         padding: 3rem 2rem;
         width: 100%;
@@ -109,5 +119,33 @@
 
     .pricing-subtitle {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 428px) {
+    .pricing-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .pricing-title {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .coming-soon-container {
+        padding: 2.5rem 1.5rem;
+        max-width: 95%;
+        border-radius: 20px;
+    }
+
+    .coming-soon-text {
+        font-size: 2rem;
+        letter-spacing: -1px;
+    }
+
+    .pricing-subtitle {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
     }
 }

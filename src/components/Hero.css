@@ -91,6 +91,7 @@
     background: linear-gradient(to right, #ffffff, #ff1a75, #ff3385, #ffffff);
     background-size: 200% auto;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
     animation:
@@ -178,5 +179,67 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 1.5rem 0;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .category-pill {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .hero-cta {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 428px) {
+    .hero-section {
+        padding: 70px 1rem 0;
+    }
+
+    .category-pill {
+        font-size: 0.75rem;
+        padding: 5px 14px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .hero-cta {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
     }
 }
