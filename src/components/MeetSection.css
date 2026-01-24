@@ -301,3 +301,147 @@
         opacity: 0.3;
     }
 }
+
+/* Desktop/Mobile Visibility Toggle */
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+/* Mobile Venn Diagram Styles */
+.meet-venn-mobile {
+    padding: 12rem 0 4rem;
+}
+
+.venn-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 360px;
+    margin: 0 auto;
+}
+
+.venn-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.venn-left {
+    left: 0;
+    top: 0;
+}
+
+.venn-right {
+    right: 0;
+    bottom: 0;
+    top: auto;
+}
+
+.venn-text {
+    font-family: var(--font-main);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+.venn-intersection {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff1a75 0%, #ff3385 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow:
+        0 0 30px rgba(255, 26, 117, 0.6),
+        0 10px 40px rgba(0, 0, 0, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    animation: pulsePink 3s ease-in-out infinite;
+}
+
+.venn-center-text {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 0 0.5rem;
+}
+
+@keyframes pulsePink {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 30px rgba(255, 26, 117, 0.6),
+            0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px rgba(255, 26, 117, 0.9),
+            0 10px 50px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Adjust circles for smaller screens */
+@media (max-width: 428px) {
+    .venn-container {
+        max-width: 320px;
+        height: 250px;
+    }
+
+    .venn-circle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .venn-text {
+        font-size: 1.2rem;
+    }
+
+    .venn-intersection {
+        width: 120px;
+        height: 120px;
+    }
+
+    .venn-center-text {
+        font-size: 1rem;
+    }
+}

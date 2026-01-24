@@ -12,7 +12,8 @@ const MeetSection = () => {
             <div className="meet-container">
                 <h2 className="meet-subtitle">MEET COLLABIFYY</h2>
 
-                <div className="meet-split-layout">
+                {/* Desktop Layout */}
+                <div className="meet-split-layout desktop-only">
                     {/* Brands Row */}
                     <div className="meet-row brands-row">
                         <span className="meet-large-text">BRANDS</span>
@@ -35,6 +36,26 @@ const MeetSection = () => {
                     {/* Creator Row */}
                     <div className="meet-row creator-row">
                         <span className="meet-large-text">CREATOR</span>
+                    </div>
+                </div>
+
+                {/* Mobile Venn Diagram Layout */}
+                <div className="meet-venn-mobile mobile-only">
+                    <div className="venn-container">
+                        {/* Left Circle - Brands */}
+                        <div className="venn-circle venn-left">
+                            <span className="venn-text">BRANDS</span>
+                        </div>
+
+                        {/* Right Circle - Creator */}
+                        <div className="venn-circle venn-right">
+                            <span className="venn-text">CREATOR</span>
+                        </div>
+
+                        {/* Intersection - Collabifyy */}
+                        <div className="venn-intersection">
+                            <span className="venn-center-text">COLLABIFYY</span>
+                        </div>
                     </div>
                 </div>
 
