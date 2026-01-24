@@ -158,6 +158,7 @@ const CreatorFeatures = () => {
     const [ref, isVisible] = useScrollObserver({ threshold: 0.1 });
     const scrollContainerRef = React.useRef(null);
     const [activeIndex, setActiveIndex] = React.useState(0);
+    const [isMobile, setIsMobile] = React.useState(false);
 
     const originalCardList = [
         GetDiscoveredCard,
@@ -167,15 +168,29 @@ const CreatorFeatures = () => {
         CreatorToolsCard
     ];
 
-    // Triple the list for infinite scroll buffer: [Set A, Set B (Main), Set C]
-    const cardList = [...originalCardList, ...originalCardList, ...originalCardList];
+    // Conditionally triple the list only for mobile infinite scroll
+    const cardList = isMobile
+        ? [...originalCardList, ...originalCardList, ...originalCardList]
+        : originalCardList;
+
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        // Initial check
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     React.useEffect(() => {
         const container = scrollContainerRef.current;
         if (!container) return;
 
         const handleScroll = () => {
-            if (!container) return;
+            if (!container || !isMobile) return;
 
             const scrollLeft = container.scrollLeft;
             const scrollWidth = container.scrollWidth;
@@ -200,6 +215,7 @@ const CreatorFeatures = () => {
 
         // Initialize scroll position to the start of the middle set (Set B)
         const initScroll = () => {
+            if (!isMobile) return;
             const scrollWidth = container.scrollWidth;
             const singleSetWidth = scrollWidth / 3;
             container.scrollLeft = singleSetWidth;
@@ -208,7 +224,9 @@ const CreatorFeatures = () => {
         // Run initialization
         requestAnimationFrame(() => {
             initScroll();
-            container.addEventListener('scroll', handleScroll);
+            if (isMobile) {
+                container.addEventListener('scroll', handleScroll);
+            }
         });
 
         // Observer for Active Dot and Scaling Effect
@@ -233,7 +251,7 @@ const CreatorFeatures = () => {
             container.removeEventListener('scroll', handleScroll);
             activeObserver.disconnect();
         };
-    }, []);
+    }, [isMobile]);
 
     return (
         <section
