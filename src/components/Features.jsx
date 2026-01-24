@@ -28,7 +28,7 @@ const SmartDiscoveryCard = ({ className = '', ...props }) => (
                 <h3>Smart Discovery</h3>
             </div>
             <div className="chat-input-area">
-                <div className="input-placeholder">Your AI-assistant , Collabi</div>
+                <div className="input-placeholder">Your AI-assistant</div>
             </div>
         </div>
     </div>
