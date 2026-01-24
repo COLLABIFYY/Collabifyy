@@ -3,6 +3,8 @@
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
+    /* Mobile browser support */
     background: url('/pricing_bg.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
@@ -29,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    /* height: 100%; Removed to allow parent to center the block */
     padding: 2rem;
 }
 
@@ -105,12 +107,27 @@
         font-size: 1rem;
         letter-spacing: 3px;
         margin-bottom: 1.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pricing-header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .coming-soon-container {
         padding: 3rem 2rem;
         width: 100%;
         max-width: 90%;
+        margin: 0 auto;
+        /* Force horizontal centering */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .coming-soon-text {

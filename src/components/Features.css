@@ -83,54 +83,29 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.5s ease-out,
+        filter 0.5s ease-out;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    opacity: 0;
-    animation: cardEntry 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0.5;
+    /* Default low opacity */
+    transform: scale(0.9);
+    /* Default smaller scale */
+    filter: blur(2px);
+    /* Slight blur for depth */
 }
 
-@keyframes cardEntry {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Staggered Delays using nth-child */
-.feature-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.feature-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.feature-card:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.feature-card:nth-child(4) {
-    animation-delay: 0.4s;
-}
-
-.feature-card:nth-child(5) {
-    animation-delay: 0.5s;
-}
-
-.feature-card:nth-child(6) {
-    animation-delay: 0.6s;
-}
-
+.feature-card.is-active-card,
 .feature-card:hover {
-    transform: translateY(-8px) scale(1.01);
+    opacity: 1;
+    transform: scale(1) translateY(0);
     border-color: rgba(255, 183, 213, 0.3);
-    /* Sakura accent */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    filter: blur(0px);
+    z-index: 10;
 }
 
 /* Card Sizes */
@@ -252,10 +227,11 @@
     width: 100%;
     height: 100%;
     background: #ffc0cb;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 /* Specific styling for Creator 'Get Discovered' card */
@@ -389,11 +365,12 @@
     height: 100%;
     background: #ffc0cb;
     /* Pink Theme */
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .stat-card {
@@ -412,18 +389,14 @@
     margin-bottom: 0.5rem;
 }
 
+.stat-header .stat-label,
 .stat-label {
-
-    /* Update this block */
-    .stat-header .stat-label,
-    .stat-label {
-        font-size: 0.75rem;
-        color: #ff1a75 !important;
-        /* Ye important hai */
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
+    font-size: 0.75rem;
+    color: #ff1a75 !important;
+    /* Ye important hai */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .trend-icon {
@@ -497,12 +470,13 @@
     height: 100%;
     background: #ffc0cb;
     /* Pink Theme */
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .contract-doc {
@@ -635,10 +609,11 @@
     height: 100%;
     background: #ffc0cb;
     /* Pink Theme */
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .tracking-header {
@@ -784,6 +759,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
+    padding-bottom: 5rem;
+    box-sizing: border-box;
 }
 
 .agentic-network {
@@ -1036,10 +1013,52 @@
     }
 }
 
+
+/* Missing Campaign Interface Styles */
+.campaign-interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffc0cb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    padding-bottom: 5rem;
+    box-sizing: border-box;
+}
+
+.launch-circle {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+    z-index: 2;
+}
+
+.rocket-icon {
+    color: #ff1a75;
+}
+
 /* Dark text for Free Campaigns card content */
 .card-free-campaigns .card-content h3 {
     color: #333;
     text-shadow: none;
+    color: #333;
+    text-shadow: none;
+}
+
+/* Ensure content sits on top of absolute interfaces */
+.feature-card .card-content {
+    position: relative;
+    z-index: 5;
 }
 
 .card-free-campaigns .card-badge {
@@ -1047,6 +1066,18 @@
     border-color: rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.3);
     box-shadow: none;
+}
+
+/* Clone Helper for Mobile Loop */
+.mobile-clone {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-clone {
+        display: block;
+        /* They are block/flex items in mobile carousel */
+    }
 }
 
 @media (max-width: 900px) {
@@ -1073,10 +1104,88 @@
     }
 }
 
-@media (max-width: 428px) {
+@media (max-width: 768px) {
     .features-grid {
-        grid-auto-rows: 220px;
-        gap: 1rem;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        width: calc(100% + 2rem);
+        /* Account for negative margin */
+        margin-left: -1rem;
+        /* Counteract section padding to go full width */
+        padding-left: 20vw;
+        /* Start with first item centered */
+        padding-right: 20vw;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+
+        /* Force Hide Scrollbar */
+        scrollbar-width: none !important;
+        /* Firefox */
+        -ms-overflow-style: none !important;
+        /* IE 10+ */
+    }
+
+    .features-grid::-webkit-scrollbar {
+        display: none !important;
+        /* Safari and Chrome */
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+    }
+
+    /* Mobile Pagination Dots */
+    .mobile-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: #ff1a75;
+        width: 24px;
+        border-radius: 4px;
+    }
+
+    /* Spacer to push first item to center */
+    .features-grid::before,
+    .features-grid::after {
+        content: '';
+        display: block;
+        min-width: 0px;
+    }
+
+    .feature-card {
+        flex: 0 0 75vw;
+        /* 75% viewport width */
+        min-width: 75vw;
+        height: 400px;
+        scroll-snap-align: center;
+        transform-origin: center center;
+        transition: all 0.4s ease;
+        transform: scale(0.9);
+        margin: 0;
+    }
+
+    /* Active card state */
+    .feature-card.is-active-card {
+        transform: scale(1);
+        z-index: 10;
+        box-shadow: 0 10px 30px rgba(255, 26, 117, 0.2);
+        border: 1px solid rgba(255, 26, 117, 0.4);
     }
 
     .features-headline {
@@ -1095,6 +1204,56 @@
 
     .card-content h3 {
         font-size: 1.1rem;
+    }
+
+    /* internal interface optimizations */
+    .ai-chat-interface,
+    .analytics-interface,
+    .contract-interface,
+    .creator-tools-interface {
+        padding: 1rem;
+    }
+
+    /* Chat Elements */
+    .chat-message {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .chat-avatar-ai {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Analytics Elements */
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .chart-container {
+        height: 60px;
+    }
+
+    /* Contract Elements */
+    .contract-doc {
+        max-width: 140px;
+        height: 160px;
+        padding: 1rem;
+    }
+
+    .contract-header {
+        font-size: 0.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Tools Elements */
+    .tool-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tool-label {
+        font-size: 0.7rem;
     }
 }
 
@@ -1190,8 +1349,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 5rem 1.5rem;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .tool-item {
