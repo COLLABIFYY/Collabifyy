@@ -230,8 +230,21 @@
     padding: 1.5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
+    display: flex;
+    flex-direction: column;
     z-index: 1;
     box-sizing: border-box;
+}
+
+/* Flex container for bottom title + input */
+.feature-card .card-content.with-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    gap: 3rem;
+    /* Increased gap */
 }
 
 /* Specific styling for Creator 'Get Discovered' card */
