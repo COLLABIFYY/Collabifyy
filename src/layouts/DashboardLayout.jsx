@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { supabase } from '../config/supabase';
+import { supabase } from '../config/supabase';
 import CreatorOnboarding from '../onboarding/CreatorOnboarding';
 import BrandOnboarding from '../onboarding/BrandOnboarding';
 import CreatorDashboard from '../creator/CreatorDashboard';
@@ -8,7 +8,7 @@ import MainLayout from './MainLayout';
 
 // DESIGN MODE: Set to true to bypass authentication
 // DESIGN MODE: Set to false to verify auth flow
-const DESIGN_MODE = true;
+const DESIGN_MODE = false;
 const DEFAULT_ROLE = 'brand';
 
 const DashboardLayout = () => {
@@ -64,7 +64,7 @@ const DashboardLayout = () => {
     };
 
     const handleLogout = async () => {
-        // await supabase.auth.signOut();
+        await supabase.auth.signOut();
         localStorage.removeItem('userRole');
         localStorage.removeItem('isAuthenticated');
         window.location.href = '/';
