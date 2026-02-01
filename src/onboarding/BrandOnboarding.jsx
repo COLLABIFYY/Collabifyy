@@ -62,7 +62,7 @@ const BrandOnboarding = ({ onComplete }) => {
                     <input
                         name="name"
                         className="form-input"
-                        placeholder="Your Name"
+                        placeholder="Your Full Name"
                         value={formData.name}
                         onChange={handleChange}
                         required
